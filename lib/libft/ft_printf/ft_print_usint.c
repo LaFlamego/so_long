@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_print_usint.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/22 15:59:38 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/25 16:57:40 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "ft_printf.h"
 
-void    error_exit(void)
+int	ft_print_usint(unsigned int n)
 {
-    ft_printf("Error\n");
-    exit(1);
+	int	count;
+
+	count = 0;
+	if (n >= 10)
+		count += ft_print_usint(n / 10);
+	ft_print_char((char)('0' + (n % 10)));
+	return (count + 1);
 }

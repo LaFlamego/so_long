@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/17 15:06:30 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/17 18:12:36 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-    ft_printf("Error\n");
-    exit(1);
+	char	*res;
+	size_t	len;
+	int		i;
+
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		res[i] = f(i, s[i]);
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }

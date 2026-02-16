@@ -1,19 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/15 15:29:14 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/15 17:30:28 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
+int	ft_atoi(const char *s)
 {
-    ft_printf("Error\n");
-    exit(1);
+	int	i;
+	int	f;
+	int	res;
+
+	i = 0;
+	f = 1;
+	while ((s[i] == 32) || (9 <= s[i] && s[i] <= 13))
+		i++;
+	if (s[i] == '-')
+	{
+		f = -1;
+		i++;
+	}
+	else if (s[i] == '+')
+		i++;
+	res = 0;
+	while (s[i] && '0' <= s[i] && s[i] <= '9')
+	{
+		res *= 10;
+		res += s[i] - '0';
+		i++;
+	}
+	return (res * f);
 }

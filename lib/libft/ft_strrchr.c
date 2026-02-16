@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/13 21:05:17 by yueli             #+#    #+#             */
+/*   Updated: 2026/01/24 09:43:41 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
-{
-    ft_printf("Error\n");
-    exit(1);
+char	*ft_strrchr(const char *s, int c)
+{	
+	const char	*last;
+
+	last = NULL;
+	while (*s)
+	{
+		if (*s == (char)c)
+			last = s;
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return ((char *)last);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+    const char s[] = "adddacccadd";
+
+    printf("%s\n", ft_strrchr(s, 'a'));
+}*/

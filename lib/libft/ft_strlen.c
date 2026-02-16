@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/10 16:44:16 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/17 21:14:43 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
+size_t	ft_strlen(const char *str)
 {
-    ft_printf("Error\n");
-    exit(1);
+	int	len;
+
+	len = 0;
+	while (*str)
+	{
+		str++;
+		len++;
+	}
+	return (len);
 }
+
+/*#include <stdio.h>
+int	main(void)
+{
+	printf("%zu\n", ft_strlen("bonjour"));
+	return 0;
+}*/

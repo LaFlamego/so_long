@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/10 16:13:31 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/11 18:14:55 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-void    error_exit(void)
+int	ft_isascii(int c)
 {
-    ft_printf("Error\n");
-    exit(1);
+	if ((0 <= c && c <= 127))
+		return (1);
+	return (0);
 }
+
+/*#include <stdio.h>
+int	main(void)
+{
+	printf("%d\n", ft_isascii(11));
+	return 0;
+}*/

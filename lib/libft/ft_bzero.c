@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/12 15:30:22 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/17 19:59:57 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
+void	ft_bzero(void *s, size_t n)
 {
-    ft_printf("Error\n");
-    exit(1);
+	size_t			i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = (unsigned char *)s;
+	while (i < n)
+	{
+		ptr[i++] = 0;
+	}
 }
+
+/*#include <strings.h>
+#include <stdio.h>
+
+int	main(void)
+{
+	char	s[] = "cestlavie";
+	ft_bzero(s, 3);
+
+	printf("%s\n", s);
+}*/

@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/13 19:38:03 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/13 19:44:09 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-void    error_exit(void)
+int	ft_tolower(int c)
 {
-    ft_printf("Error\n");
-    exit(1);
+	if ('A' <= c && c <= 'Z')
+		c += 32;
+	return (c);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+    printf("%d\n", ft_tolower('/'));
+    return 0;
+}*/

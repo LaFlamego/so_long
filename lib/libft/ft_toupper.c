@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/13 19:06:39 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/13 19:44:47 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-void    error_exit(void)
+int	ft_toupper(int c)
 {
-    ft_printf("Error\n");
-    exit(1);
+	if (97 <= c && c <= 122)
+		c -= 32;
+	return (c);
 }
+
+/*#include <stdio.h>
+int main(void)
+{
+    printf("%d\n", ft_toupper('G'));
+    return 0;
+}*/

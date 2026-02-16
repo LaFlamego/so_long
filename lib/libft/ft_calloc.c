@@ -1,19 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/16 15:59:08 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/16 17:13:00 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "libft.h"
 
-void    error_exit(void)
+void	*ft_calloc(size_t n, size_t size)
 {
-    ft_printf("Error\n");
-    exit(1);
+	void	*ptr;
+
+	ptr = malloc (size * n);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, size * n);
+	return (ptr);
 }
+
+/*#include <stdio.h>
+
+int	main(void)
+{
+	size_t n = 5;
+	int	*arr = (int *)calloc(n, sizeof(int));
+	size_t i = 0;
+
+	while (i < n)
+	{
+		printf("%d ", arr[i]);
+		i++;
+	}
+	printf("\n");
+	return 0;
+}*/

@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   libftft_printf.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/20 11:46:44 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/25 16:49:00 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void    error_exit(void)
-{
-    ft_printf("Error\n");
-    exit(1);
-}
+# include <unistd.h>
+# include <stddef.h>
+# include <stdarg.h>
+
+int	ft_printf(const char *format, ...);
+int	ft_print_char(char c);
+int	ft_print_int(int n);
+int	ft_print_string(char *s);
+int	ft_print_usint(unsigned int n);
+int	ft_print_pointer(void *ptr);
+int	ft_print_hexa_low(unsigned int n);
+int	ft_print_hexa_upper(unsigned int n);
+
+#endif

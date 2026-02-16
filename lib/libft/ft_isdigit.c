@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yueli <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Created: 2025/11/10 16:00:01 by yueli             #+#    #+#             */
+/*   Updated: 2025/11/11 18:15:16 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-void    error_exit(void)
+int	ft_isdigit(int c)
 {
-    ft_printf("Error\n");
-    exit(1);
+	if ('0' <= c && c <= '9')
+		return (1);
+	return (0);
 }
+
+/*#include <stdio.h>
+int	main(void)
+{
+	printf("%d\n", ft_isdigit('9'));
+	return 0;
+}*/
