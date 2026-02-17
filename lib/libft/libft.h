@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:08:10 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/13 15:07:31 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/17 17:56:12 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_calloc(size_t n, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *str);
+size_t	ft_strnb(char **strs);
 size_t	ft_strlcpy(char *s1, const char *s2, size_t dsize);
 size_t	ft_strlcat(char *s1, const char *s2, size_t dsize);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
