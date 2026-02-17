@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:05 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/17 18:05:30 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/17 18:21:25 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strnb(char **strs);
 //if rectangular (done)
 //if 01CEP(only) (done)
 //if P=1, E=1, C>=1 (done)
-//if enclosed by 1
+//if enclosed by 1 (done)
 //if valid path(at least one way to go)
 
 bool    is_rectangular(char **map)
@@ -39,7 +39,7 @@ bool    is_rectangular(char **map)
     return (true);
 }
 
-bool    is_valid_char(char **map)
+bool    is_valid_tile(char **map)
 {
     int i;
     int lookup[3] = {};
@@ -87,10 +87,8 @@ bool    is_enclosed(char **map)
     i = 1;
     line_nb = ft_strnb(map);
     line_len = ft_strlen(*map);
-    printf("1111\n");
     if (!is_all_one(map[0]) || !is_all_one(map[line_nb - 1]))
         return (false);
-    printf("2222\n");
     while (i < line_nb - 1)
     {
         printf("%s\n", map[i]);
