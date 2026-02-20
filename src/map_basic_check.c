@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   map_basic_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,29 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "../includes/so_long.h"
-#include <stdio.h>
-#include <stdbool.h>
-
-size_t	ft_strlen(const char *str);
-size_t	ft_strnb(char **strs);
-
 //if rectangular (done)
 //if 01CEP(only) (done)
 //if P=1, E=1, C>=1 (done)
 //if enclosed by 1 (done)
-//if valid path(at least one way to go)
+
+// #include <stdio.h>
+// #include <stdbool.h>
+
+// size_t	ft_strlen(const char *str);
+// size_t	ft_strnb(char **strs);
+
+#include "../includes/so_long.h"
+
+// void    init_map(t_map *map)
+// {
+//     map->width = ft_strlen(map->map);
+//     map->height = ft_strnb(map->map[0]);
+// }
 
 bool    is_rectangular(char **map)
 {
-    int line_len;
+    size_t width;
     
     if (!map || !*map)
         return (false);
-    line_len = ft_strlen(*map);
+    width = ft_strlen(*map);
     while (*map)
     {
-        if (ft_strlen(*map) != line_len)
+        if (ft_strlen(*map) != width)
             return (false);
         ++map;
     }
@@ -67,47 +73,42 @@ bool    is_valid_tile(char **map)
     return (true);
 }
 
-bool    is_all_one(char *line)
+bool    is_all_one(char *row)
 {
-    while (*line)
+    while (*row)
     {
-        if (*line != '1')
+        if (*row != '1')
             return (false);
-        ++line;
+        ++row;
     }
     return (true);
 }
 
 bool    is_enclosed(char **map)
 {
-    int     i;
-    size_t  line_nb;
-    size_t  line_len;
+    size_t  i;
+    size_t  height;
+    size_t  width;
 
     i = 1;
-    line_nb = ft_strnb(map);
-    line_len = ft_strlen(*map);
-    if (!is_all_one(map[0]) || !is_all_one(map[line_nb - 1]))
+    height = ft_strnb(map);
+    width = ft_strlen(*map);
+    if (!is_all_one(map[0]) || !is_all_one(map[height - 1]))
         return (false);
-    while (i < line_nb - 1)
+    while (i < height - 1)
     {
         printf("%s\n", map[i]);
-        if (map[i][0] != '1' || map[i][line_len - 1] != '1')
+        if (map[i][0] != '1' || map[i][width - 1] != '1')
             return (false);
         ++i;
     }
     return (true);
 }
 
-// void    map_check()
+// int main(void)
 // {
+//     char *map[] = {"11111", "10001", "10001", "10001", "11111", NULL};
 
+//     printf("%d\n", is_enclosed(map));
+//     return 0;
 // }
-
-int main(void)
-{
-    char *map[] = {"11111", "10001", "10001", "10001", "11111", NULL};
-
-    printf("%d\n", is_enclosed(map));
-    return 0;
-}

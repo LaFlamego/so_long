@@ -6,14 +6,43 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/16 12:13:19 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/20 14:51:02 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void    error_exit(void)
+void    free_strs(char **strs, char *str)
 {
-    ft_printf("Error\n");
+	char	**tmp;
+
+	if (!strs && !str)
+		return ;
+	if (strs)
+	{
+		tmp = strs;
+		while (*tmp)
+		{
+			free(*tmp);
+			*tmp = NULL;
+			++tmp;
+		}
+		free(strs);
+	}
+	if (str)
+		free(str);
+}
+
+void    error_exit(char *msg)
+{
+    ft_printf("Error\n%s\n", msg);
+    exit(1);
+}
+
+void	close_free_error_exit(int fd, char **strs, char *str, char *msg)
+{
+    close(fd);
+	free_strs(strs, str);
+	ft_printf("Error\n%s\n", msg);
     exit(1);
 }

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   init_ctx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/14 14:32:42 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/19 14:06:59 by yueli            ###   ########.fr       */
+/*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
+/*   Updated: 2026/02/20 15:11:16 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-//#include <stddef.h>
+#include "../includes/so_long.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	init_ctx(t_ctx *ctx, int argc, char **argv)
 {
-	size_t	i;
-
-	if (n == 0)
-		return (0);
-	i = 0;
-	while ((i < n - 1) && s1[i] && s2[i]
-		&& s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	ft_bzero(ctx, sizeof(t_ctx));
+	ctx->argc = argc;
+	ctx->argv = argv;
+	ctx->map_data.begin.x = 0;
+	ctx->map_data.begin.y = 0;
+	ctx->map_data.fd = -1;
+	ctx->map_data.height = 0;
+	ctx->map_data.width = 0;
+	ctx->map_data.map = NULL;
 }
-/*#include <stdio.h>
-int main(void)
-{
-    printf("%d\n", ft_strncmp(" 2", " 2", 5));
-    return 0;
-}*/

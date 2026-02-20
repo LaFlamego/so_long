@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 15:08:10 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/17 17:56:12 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/19 14:55:40 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ size_t	ft_strnb(char **strs);
 size_t	ft_strlcpy(char *s1, const char *s2, size_t dsize);
 size_t	ft_strlcat(char *s1, const char *s2, size_t dsize);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_ends_with(char *str, char *ends);
 char	*ft_strnstr(const char *big, const char *lit, size_t len);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strdup(const char *s);
+char	**ft_strsdup(char **strs);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s1, char const *set);
