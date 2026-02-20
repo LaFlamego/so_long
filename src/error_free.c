@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/20 14:51:02 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/20 21:49:35 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ void    free_strs(char **strs, char *str)
 			++tmp;
 		}
 		free(strs);
+		strs = NULL;
 	}
 	if (str)
+	{
 		free(str);
+		str = NULL;
+	}
 }
 
 void    error_exit(char *msg)

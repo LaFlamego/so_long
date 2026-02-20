@@ -20,8 +20,7 @@ bool    is_enclosed(char **map);
 
 static void	fill(char **dup_map, t_ctx *ctx, size_t row, size_t col)
 {
-	if (row < 0 || col < 0 || row >= ctx->map_data.height
-		|| col >= ctx->map_data.width)
+	if (row >= ctx->map_data.height || col >= ctx->map_data.width)
 		return ;
 	if (dup_map[row][col] == '1')
 		return ;
@@ -36,12 +35,10 @@ static void	fill(char **dup_map, t_ctx *ctx, size_t row, size_t col)
 
 bool	is_valid_path(t_ctx *ctx)
 {
-	char	target;
 	char	**dup_map;
 	int		i;
 
 	dup_map = ft_strsdup(ctx->map_data.map);
-	target = ctx->map_data.map[ctx->map_data.begin.y][ctx->map_data.begin.x];
 	fill(dup_map, ctx, ctx->map_data.begin.y, ctx->map_data.begin.x);
 	while (*dup_map)
 	{
