@@ -16,7 +16,7 @@
 
 bool    is_rectangular(char **map);
 bool    is_valid_tile(char **map);
-bool    is_enclosed(char **map);
+bool    is_enclosed(char **map, t_ctx *ctx);
 
 static void	fill(char **dup_map, t_ctx *ctx, size_t row, size_t col)
 {
@@ -33,7 +33,7 @@ static void	fill(char **dup_map, t_ctx *ctx, size_t row, size_t col)
     fill(dup_map, ctx, row, col + 1);
 }
 
-bool	is_valid_path(t_ctx *ctx)
+static bool	is_valid_path(t_ctx *ctx)
 {
 	char	**dup_map;
 	int		i;
@@ -58,13 +58,13 @@ bool	is_valid_path(t_ctx *ctx)
 bool	is_valid_map(t_ctx *ctx)
 {
 	if (!is_rectangular(ctx->map_data.map))
-		error_exit("Map is not a rectangular :c");
+		error_free_exit("Map is not a rectangular :c", ctx);
 	else if (!is_valid_tile(ctx->map_data.map))
-		error_exit("Tiles are not valid :c");
-	else if (!is_enclosed(ctx->map_data.map))
-		error_exit("Oops! We need more walls!");
+		error_free_exit("Tiles are not valid :c", ctx);
+	else if (!is_enclosed(ctx->map_data.map, ctx))
+		error_free_exit("Oops! We need right walls!", ctx);
 	else if (!is_valid_path(ctx))
-		error_exit("0 path is good to go :/");
+		error_free_exit("0 path is good to go :/", ctx);
 	return (true);
 }
 

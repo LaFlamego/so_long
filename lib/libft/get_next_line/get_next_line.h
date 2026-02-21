@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 13:37:41 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/20 22:39:25 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/21 09:24:27 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 char	*get_next_line(int fd, bool is_start);
 char	*ft_extract_line(char *buff);
-char	*read_file(int fd, char *res, bool is_start);
+char	*read_file(int fd, char *res);
 char	*ft_next_stash(char *buff);
 void	*ft_calloc(size_t n, size_t size);
 

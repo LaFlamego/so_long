@@ -23,12 +23,6 @@
 
 #include "../includes/so_long.h"
 
-// void    init_map(t_map *map)
-// {
-//     map->width = ft_strlen(map->map);
-//     map->height = ft_strnb(map->map[0]);
-// }
-
 bool    is_rectangular(char **map)
 {
     size_t width;
@@ -84,15 +78,15 @@ bool    is_all_one(char *row)
     return (true);
 }
 
-bool    is_enclosed(char **map)
+bool    is_enclosed(char **map, t_ctx *ctx)
 {
     size_t  i;
     size_t  height;
     size_t  width;
 
     i = 1;
-    height = ft_strnb(map);
-    width = ft_strlen(*map);
+    height = ctx->map_data.height;
+    width = ctx->map_data.width;
     if (!is_all_one(map[0]) || !is_all_one(map[height - 1]))
         return (false);
     while (i < height - 1)

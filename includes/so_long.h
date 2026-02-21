@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/21 00:11:56 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/21 11:30:57 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ typedef struct  s_ctx
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv);
 void    error_exit(char *msg);
+void    error_free_exit(char *msg, t_ctx *ctx);
 void	close_free_error_exit(int fd, char **strs, char *str, char *msg);
 void    free_strs(char **strs, char *str);
 void	load_map(t_ctx *ctx);
+bool	is_valid_map(t_ctx *ctx);
 
 #endif

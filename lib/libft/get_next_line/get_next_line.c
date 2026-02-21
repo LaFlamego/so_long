@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 15:02:33 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/20 22:39:49 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/21 09:24:10 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ char	*join_free(char *stash, char *buff)
 	return (tpr);
 }
 
-char	*read_file(int fd, char *stash, bool is_start)
+char	*read_file(int fd, char *stash)
 {
 	char	*buff;
 	int		bytes_read;
 
-	if (!stash && is_start)
+	if (!stash)
 		stash = ft_calloc(1, 1);
 	if (!stash)
 		return (NULL);
@@ -118,7 +118,7 @@ char	*get_next_line(int fd, bool is_start)
 	}
 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
-	stash[fd] = read_file(fd, stash[fd], is_start);
+	stash[fd] = read_file(fd, stash[fd]);
 	if (!stash[fd])
 		return (NULL);
 	line = ft_extract_line(stash[fd]);
