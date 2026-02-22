@@ -15,30 +15,32 @@
 #include "../includes/so_long.h"
 
 bool    is_rectangular(char **map);
-bool    is_valid_tile(char **map);
+bool    is_valid_tile(t_ctx *ctx);
 bool    is_enclosed(char **map, t_ctx *ctx);
 
-static void	fill(char **dup_map, t_ctx *ctx, size_t row, size_t col)
+static void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
 {
-	if (row >= ctx->map_data.height || col >= ctx->map_data.width)
+	if (y >= ctx->map_data.height || x >= ctx->map_data.width)
 		return ;
-	if (dup_map[row][col] == '1')
+	if (dup_map[y][x] == '1')
 		return ;
-	else if (dup_map[row][col] == '0' || dup_map[row][col] == 'E'
-		|| dup_map[row][col] == 'C' || dup_map[row][col] == 'P')
-		dup_map[row][col] = '1';
-	fill(dup_map, ctx, row - 1, col);
-	fill(dup_map, ctx, row + 1, col);
-    fill(dup_map, ctx, row, col - 1);
-    fill(dup_map, ctx, row, col + 1);
+	else if (dup_map[y][x] == '0' || dup_map[y][x] == 'E'
+		|| dup_map[y][x] == 'C' || dup_map[y][x] == 'P')
+		dup_map[y][x] = '1';
+	fill(dup_map, ctx, y - 1, x);
+	fill(dup_map, ctx, y + 1, x);
+    fill(dup_map, ctx, y, x - 1);
+    fill(dup_map, ctx, y, x + 1);
 }
 
 static bool	is_valid_path(t_ctx *ctx)
 {
 	char	**dup_map;
+	char	**tpr;
 	int		i;
 
 	dup_map = ft_strsdup(ctx->map_data.map);
+	tpr = dup_map;
 	fill(dup_map, ctx, ctx->map_data.begin.y, ctx->map_data.begin.x);
 	while (*dup_map)
 	{
@@ -51,7 +53,7 @@ static bool	is_valid_path(t_ctx *ctx)
 		}
 		++dup_map;
 	}
-	free_strs(dup_map, NULL);
+	free_strs(tpr, NULL);
 	return (true);
 }
 
@@ -59,7 +61,7 @@ bool	is_valid_map(t_ctx *ctx)
 {
 	if (!is_rectangular(ctx->map_data.map))
 		error_free_exit("Map is not a rectangular :c", ctx);
-	else if (!is_valid_tile(ctx->map_data.map))
+	else if (!is_valid_tile(ctx))
 		error_free_exit("Tiles are not valid :c", ctx);
 	else if (!is_enclosed(ctx->map_data.map, ctx))
 		error_free_exit("Oops! We need right walls!", ctx);

@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/20 15:11:16 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/21 15:57:12 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->map_data.height = 0;
 	ctx->map_data.width = 0;
 	ctx->map_data.map = NULL;
+	ctx->grc_data.mlx = NULL;
+	ctx->grc_data.win = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/21 11:30:57 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/21 20:10:36 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 # define SO_LONG_H
 
 #include "../lib/libft/libft.h"
+#include "../lib/minilibx-linux/mlx.h"
+#include "../lib/minilibx-linux/mlx_int.h"
 #include <fcntl.h>
 #include <stdio.h>
+
+#ifndef TILE_SIZE
+# define TILE_SIZE 64
+#endif
 
 typedef struct  s_tile
 {
@@ -32,11 +38,18 @@ typedef struct  s_map
     struct s_tile   begin;
 }   t_map;
 
+typedef struct  s_grc
+{
+    void    *mlx;
+    void    *win;
+}   t_grc;
+
 typedef struct  s_ctx
 {
     char            **argv;
     int             argc;
     struct s_map    map_data;
+    struct s_grc    grc_data;
 }   t_ctx;
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv);
@@ -46,5 +59,7 @@ void	close_free_error_exit(int fd, char **strs, char *str, char *msg);
 void    free_strs(char **strs, char *str);
 void	load_map(t_ctx *ctx);
 bool	is_valid_map(t_ctx *ctx);
+void	init_mlx(t_ctx *ctx);
+void	get_img(t_ctx *ctx);
 
 #endif
