@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 16:58:08 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/19 14:07:52 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/23 14:17:58 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	**ft_strsdup(char **strs)
 	i = 0;
 	while (i < len)
 	{
-		res[i] = strs[i];
+		res[i] = ft_strdup(strs[i]);
 		++i;
 	}
 	return (res);

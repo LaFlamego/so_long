@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_ctx.c                                         :+:      :+:    :+:   */
+/*   init_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/21 15:57:12 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/23 16:30:34 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int		close_window(void *prm);
+int		esc_close(int keycode, void *prm);
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv)
 {
@@ -25,4 +28,27 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->map_data.map = NULL;
 	ctx->grc_data.mlx = NULL;
 	ctx->grc_data.win = NULL;
+}
+
+void	init_mlx(t_ctx *ctx)
+{
+	void	*mlx_ptr;
+	size_t	width;
+	size_t	height;
+
+	width = ctx->map_data.width;
+	height = ctx->map_data.height;
+	ctx->grc_data.mlx = mlx_init();
+	if (!ctx->grc_data.mlx)
+		return ;
+	mlx_ptr = ctx->grc_data.mlx;
+	ctx->grc_data.win = mlx_new_window(mlx_ptr, width * TILE_SIZE, height * TILE_SIZE, "so_long v.v");
+	if (!ctx->grc_data.win)
+		return ;
+}
+
+void	init_hook(t_ctx *ctx)
+{
+	mlx_hook(ctx->grc_data.win, 17, 0, close_window, ctx);
+	mlx_key_hook(ctx->grc_data.win, esc_close, ctx);
 }
