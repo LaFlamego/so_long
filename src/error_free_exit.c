@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/23 16:27:28 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/24 14:50:26 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,21 @@ void	close_free_error_exit(int fd, char **strs, char *str, char *msg)
     exit(1);
 }
 
-void	clear_exit(t_ctx *ctx)
+void	clear_exit(t_ctx *ctx, char *msg)
 {
+	ft_printf("Error\n%s\n", msg);
 	if (ctx->map_data.map)
 		free_strs(ctx->map_data.map, NULL);
-	if (ctx->grc_data.img) //and other imges added later
-		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img);
+	if (ctx->grc_data.img_wall)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_wall);
+	if (ctx->grc_data.img_floor)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_floor);
+	if (ctx->grc_data.img_player)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_player);
+	if (ctx->grc_data.img_exit)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_exit);
+	if (ctx->grc_data.img_clctb)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_clctb);
 	if (ctx->grc_data.win)
 		mlx_destroy_window(ctx->grc_data.mlx, ctx->grc_data.win);
 	if (ctx->grc_data.mlx)

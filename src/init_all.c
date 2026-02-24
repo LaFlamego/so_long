@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/23 16:30:34 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/24 14:37:42 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->map_data.map = NULL;
 	ctx->grc_data.mlx = NULL;
 	ctx->grc_data.win = NULL;
+	ctx->grc_data.img_wall = NULL;
+	ctx->grc_data.img_floor = NULL;
+	ctx->grc_data.img_player = NULL;
+	ctx->grc_data.img_exit = NULL;
+	ctx->grc_data.img_clctb = NULL;
+	ctx->grc_data.img_w = 0;
+	ctx->grc_data.img_h = 0;
 }
 
 void	init_mlx(t_ctx *ctx)
