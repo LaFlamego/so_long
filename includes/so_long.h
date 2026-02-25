@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 17:40:01 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 23:20:58 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_tile
 {
 	int				x;
 	int				y;
-	void			*img;
 }					t_tile;
 
 typedef struct s_move
@@ -45,6 +44,14 @@ typedef struct s_move
 	int				dx;
 	int 			dy;
 }					t_move;
+
+typedef struct s_anm
+{
+	void			*frms[2];
+	int				frms_count;
+	int				cur;
+	int				tick;
+}			t_anm;
 
 typedef struct s_map
 {
@@ -62,6 +69,7 @@ typedef struct s_grc
 	void			*img_floor;
 	void			*img_exit;
 	void			*img_clctb;
+	void			*img_enemy;
 	int				img_w;
 	int				img_h;
 
@@ -76,6 +84,7 @@ typedef struct s_ctx
 	struct s_map	map_data;
 	struct s_grc	grc_data;
 	struct s_tile	player;
+	struct s_anm	ply_anm;
 }					t_ctx;
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv);
@@ -91,5 +100,6 @@ void	init_hook(t_ctx *ctx);
 void	load_sprites(t_ctx *ctx);
 void	render_map(t_ctx *ctx);
 void	draw_player(t_ctx *ctx);
+void	print_steps(t_ctx *ctx);
 
 #endif

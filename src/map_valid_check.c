@@ -25,7 +25,7 @@ static void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
 	if (dup_map[y][x] == '1')
 		return ;
 	else if (dup_map[y][x] == '0' || dup_map[y][x] == 'E'
-		|| dup_map[y][x] == 'C' || dup_map[y][x] == 'P')
+		|| dup_map[y][x] == 'C' || dup_map[y][x] == 'P' || dup_map[y][x] == 'O')
 		dup_map[y][x] = '1';
 	fill(dup_map, ctx, y - 1, x);
 	fill(dup_map, ctx, y + 1, x);

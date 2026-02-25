@@ -57,6 +57,8 @@ static void	tile_check_and_mark(t_ctx *ctx, int lookup[3], int i, int j)
 		lookup[2] += 1;
 		++ctx->clctbs;
 	}
+	else if (map[j][i] == 'O')
+		lookup[3] += 1;
 }
 
 bool	is_valid_tile(t_ctx *ctx)
@@ -64,7 +66,7 @@ bool	is_valid_tile(t_ctx *ctx)
 	int		i;
 	int		j;
 	char	**map;
-	int		lookup[3] = {};
+	int		lookup[4] = {};
 
 	map = ctx->map_data.map;
 	j = 0;
@@ -74,14 +76,14 @@ bool	is_valid_tile(t_ctx *ctx)
 		while (map[j][i])
 		{
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'C'
-				&& map[j][i] != 'E' && map[j][i] != 'P')
+				&& map[j][i] != 'E' && map[j][i] != 'P' && map[j][i] != 'O')
 				return (false);
 			tile_check_and_mark(ctx, lookup, i, j);
 			++i;
 		}
 		++j;
 	}
-	if (lookup[0] != 1 || lookup[1] != 1 || lookup[2] < 1)
+	if (lookup[0] != 1 || lookup[1] != 1 || lookup[2] < 1 || lookup[3] > 1)
 		return (false);
 	return (true);
 }

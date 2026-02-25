@@ -6,7 +6,7 @@
 #    By: yueli <yueli@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 11:32:37 by yueli             #+#    #+#              #
-#    Updated: 2026/02/25 17:20:26 by yueli            ###   ########.fr        #
+#    Updated: 2026/02/25 23:30:52 by yueli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_DIRS = src
 VPATH = $(SRC_DIRS)
 SRCS =  main.c error_free_exit.c init_all.c read_map.c load_map.c \
 		map_basic_check.c map_valid_check.c render_map.c close_window.c \
-		handle_move.c handle_clctb_and_win.c
+		handle_move_and_key.c handle_dynamics.c load_sprites.c clear_exit.c\
 
 OBJS = $(SRCS:.c=.o)
 

@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_move.c                                      :+:      :+:    :+:   */
+/*   handle_move_and_key.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:04:13 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 17:47:53 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 22:01:06 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	update_clctb(t_ctx *ctx);
+void	handle_exit(t_ctx *ctx);
+void	check_if_enemy(t_ctx *ctx);
 
 t_move	trans_key_to_move(int key)
 {
@@ -46,6 +50,7 @@ void	to_move(t_move move, t_ctx *ctx)
 	ctx->player.x += move.dx;
 	ctx->player.y += move.dy;
 	++ctx->stps;
+	update_clctb(ctx);
 }
 
 int	handle_key(int keycode, void *prm)
@@ -62,7 +67,10 @@ int	handle_key(int keycode, void *prm)
 	if (!is_movable(move, ctx))
 		return (0);
 	to_move(move, ctx);
+	check_if_enemy(ctx);
+	handle_exit(ctx);
 	render_map(ctx);
 	draw_player(ctx);
+	print_steps(ctx);
 	return (0);
 }

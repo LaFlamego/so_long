@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 17:30:08 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 23:21:01 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		close_window(void *prm);
 int		handle_key(int keycode, void *prm);
+int		anm_loop(t_ctx *ctx);
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv)
 {
@@ -30,13 +31,16 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->grc_data.img_floor = NULL;
 	ctx->grc_data.img_exit = NULL;
 	ctx->grc_data.img_clctb = NULL;
+	ctx->grc_data.img_enemy = NULL;
 	ctx->grc_data.img_w = 0;
 	ctx->grc_data.img_h = 0;
 	ctx->player.x = 0;
 	ctx->player.y = 0;
-	ctx->player.img = NULL;
 	ctx->stps = 0;
 	ctx->clctbs = 0;
+	ctx->ply_anm.frms_count = 2;
+	ctx->ply_anm.cur = 0;
+	ctx->ply_anm.tick = 0;
 }
 
 void	init_mlx(t_ctx *ctx)
@@ -60,4 +64,5 @@ void	init_hook(t_ctx *ctx)
 {
 	mlx_hook(ctx->grc_data.win, 17, 0, close_window, ctx);
 	mlx_key_hook(ctx->grc_data.win, handle_key, ctx);
+	mlx_loop_hook(ctx->grc_data.mlx, anm_loop, ctx);
 }
