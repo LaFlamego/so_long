@@ -39,7 +39,7 @@ bool	is_rectangular(char **map)
 	return (true);
 }
 
-static void	tile_check_get_begin(t_ctx *ctx, int lookup[3], int i, int j)
+static void	tile_check_and_mark(t_ctx *ctx, int lookup[3], int i, int j)
 {
 	char	**map;
 
@@ -47,13 +47,16 @@ static void	tile_check_get_begin(t_ctx *ctx, int lookup[3], int i, int j)
 	if (map[j][i] == 'P')
 	{
 		lookup[0] += 1;
-		ctx->map_data.begin.x = i;
-		ctx->map_data.begin.y = j;
+		ctx->player.x = i;
+		ctx->player.y = j;
 	}
 	else if (map[j][i] == 'E')
 		lookup[1] += 1;
 	else if (map[j][i] == 'C')
+	{
 		lookup[2] += 1;
+		++ctx->clctbs;
+	}
 }
 
 bool	is_valid_tile(t_ctx *ctx)
@@ -73,7 +76,7 @@ bool	is_valid_tile(t_ctx *ctx)
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'C'
 				&& map[j][i] != 'E' && map[j][i] != 'P')
 				return (false);
-			tile_check_get_begin(ctx, lookup, i, j);
+			tile_check_and_mark(ctx, lookup, i, j);
 			++i;
 		}
 		++j;

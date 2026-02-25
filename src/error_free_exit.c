@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:50:51 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 00:09:41 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 16:58:57 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ void	clear_exit(t_ctx *ctx, char *msg)
 		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_wall);
 	if (ctx->grc_data.img_floor)
 		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_floor);
-	if (ctx->grc_data.img_player)
-		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_player);
+	if (ctx->player.img)
+		mlx_destroy_image(ctx->grc_data.mlx, ctx->player.img);
 	if (ctx->grc_data.img_exit)
 		mlx_destroy_image(ctx->grc_data.mlx, ctx->grc_data.img_exit);
 	if (ctx->grc_data.img_clctb)

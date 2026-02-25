@@ -42,15 +42,6 @@ void	open_map(t_ctx *ctx)
 
 void	load_map(t_ctx *ctx)
 {
-	// int	i;
-
 	open_map(ctx);
 	read_map(ctx);
-	// i = 0;
-	// while (ctx->map_data.map[i])
-	// {
-	// 	ft_printf("%s\n", ctx->map_data.map[i]);
-	// 	++i;
-	// }
-	//free_strs(ctx->map_data.map, NULL);
 }

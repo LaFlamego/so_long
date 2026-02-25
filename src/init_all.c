@@ -6,22 +6,20 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/24 14:37:42 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 17:30:08 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 int		close_window(void *prm);
-int		esc_close(int keycode, void *prm);
+int		handle_key(int keycode, void *prm);
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv)
 {
 	ft_bzero(ctx, sizeof(t_ctx));
 	ctx->argc = argc;
 	ctx->argv = argv;
-	ctx->map_data.begin.x = 0;
-	ctx->map_data.begin.y = 0;
 	ctx->map_data.fd = -1;
 	ctx->map_data.height = 0;
 	ctx->map_data.width = 0;
@@ -30,11 +28,15 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->grc_data.win = NULL;
 	ctx->grc_data.img_wall = NULL;
 	ctx->grc_data.img_floor = NULL;
-	ctx->grc_data.img_player = NULL;
 	ctx->grc_data.img_exit = NULL;
 	ctx->grc_data.img_clctb = NULL;
 	ctx->grc_data.img_w = 0;
 	ctx->grc_data.img_h = 0;
+	ctx->player.x = 0;
+	ctx->player.y = 0;
+	ctx->player.img = NULL;
+	ctx->stps = 0;
+	ctx->clctbs = 0;
 }
 
 void	init_mlx(t_ctx *ctx)
@@ -57,5 +59,5 @@ void	init_mlx(t_ctx *ctx)
 void	init_hook(t_ctx *ctx)
 {
 	mlx_hook(ctx->grc_data.win, 17, 0, close_window, ctx);
-	mlx_key_hook(ctx->grc_data.win, esc_close, ctx);
+	mlx_key_hook(ctx->grc_data.win, handle_key, ctx);
 }

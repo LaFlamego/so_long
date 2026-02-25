@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 14:58:20 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/24 14:51:10 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/25 17:30:21 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,5 @@ int	close_window(void *prm)
 
 	ctx = (t_ctx *)prm;
 	clear_exit(ctx, NULL);
-	return (0);
-}
-
-int	esc_close(int keycode, void *prm)
-{
-	t_ctx	*ctx;
-
-	ctx = (t_ctx *)prm;
-	if (keycode == 65307)
-		clear_exit(ctx, NULL);
 	return (0);
 }

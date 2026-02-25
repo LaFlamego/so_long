@@ -41,7 +41,7 @@ static bool	is_valid_path(t_ctx *ctx)
 
 	dup_map = ft_strsdup(ctx->map_data.map);
 	tpr = dup_map;
-	fill(dup_map, ctx, ctx->map_data.begin.y, ctx->map_data.begin.x);
+	fill(dup_map, ctx, ctx->player.y, ctx->player.x);
 	while (*dup_map)
 	{
 		i = 0;
