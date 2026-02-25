@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/24 15:53:28 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/24 23:23:18 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ bool	is_valid_map(t_ctx *ctx);
 void	init_mlx(t_ctx *ctx);
 void	init_hook(t_ctx *ctx);
 void	load_sprites(t_ctx *ctx);
-void	get_img(t_ctx *ctx);
+void	draw_map_by_tile(t_ctx *ctx);
 
 #endif

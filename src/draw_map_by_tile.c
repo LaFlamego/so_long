@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_img.c                                         :+:      :+:    :+:   */
+/*   draw_map_by_tile.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:58:00 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/21 20:11:28 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/24 23:30:14 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,38 @@ void	load_sprites(t_ctx *ctx)
 		clear_exit(ctx, "Sprites not valid :c");
 }
 
-void	get_img(t_ctx *ctx)
+static void	draw_stuff(char type, size_t x, size_t y, t_ctx *ctx)
 {
-	//void	*img;
-	void	*mlx_ptr;
-	void	*window;
+	mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_floor, x * TILE_SIZE, y * TILE_SIZE);
+	if (type == '1')
+		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_wall, x * TILE_SIZE, y * TILE_SIZE);
+	else if (type == 'P')
+		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_player, x * TILE_SIZE, y * TILE_SIZE);
+	else if (type == 'E')
+		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_exit, x * TILE_SIZE, y * TILE_SIZE);
+	else if (type == 'C')
+		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_clctb, x * TILE_SIZE, y * TILE_SIZE);
+}
+
+void	draw_map_by_tile(t_ctx *ctx)
+{
 	char	**map;
-	size_t	width;
-	size_t	height;
 	size_t	x;
 	size_t	y;
 
-	mlx_ptr = ctx->grc_data.mlx;
-	width = ctx->map_data.width;
-	height = ctx->map_data.height;
-	window = ctx->grc_data.win;
 	map = ctx->map_data.map;
-	//img = mlx_new_image(mlx_ptr, width, height);
 	y = 0;
 	while (map[y])
 	{
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '1')
-				mlx_put_image_to_window(mlx_ptr, window, ctx->grc_data.img_wall, x, y);
-			else if (map[y][x] == '0')
-				mlx_put_image_to_window(mlx_ptr, window, ctx->grc_data.img_floor, x, y);
-			else if (map[y][x] == 'P')
-				mlx_put_image_to_window(mlx_ptr, window, ctx->grc_data.img_player, x, y);
-			else if (map[y][x] == 'E')
-				mlx_put_image_to_window(mlx_ptr, window, ctx->grc_data.img_exit, x, y);
-			else if (map[y][x] == 'C')
-				mlx_put_image_to_window(mlx_ptr, window, ctx->grc_data.img_clctb, x, y);
+			draw_stuff(map[y][x], x, y, ctx);
 			++x;
 		}
 		++y;

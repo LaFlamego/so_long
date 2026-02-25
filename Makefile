@@ -6,7 +6,7 @@
 #    By: yueli <yueli@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 11:32:37 by yueli             #+#    #+#              #
-#    Updated: 2026/02/23 16:32:57 by yueli            ###   ########.fr        #
+#    Updated: 2026/02/24 23:23:32 by yueli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -I ./includes
 SRC_DIRS = src
 VPATH = $(SRC_DIRS)
 SRCS =  main.c error_free_exit.c init_all.c read_map.c load_map.c \
-		map_basic_check.c map_valid_check.c get_img.c close_window.c  
+		map_basic_check.c map_valid_check.c draw_map_by_tile.c close_window.c  
 
 OBJS = $(SRCS:.c=.o)
 

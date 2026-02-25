@@ -33,7 +33,7 @@ static char *clctb[] = {
 "0 c #EF6E6E",
 "q c #E57171",
 "w c #F17575",
-"e c None",
+"e c #C3E3FF",
 /* pixels */
 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
 "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
