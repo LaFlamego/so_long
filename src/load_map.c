@@ -25,7 +25,7 @@ void	open_map(t_ctx *ctx)
 
 	fd = -1;
 	if (ctx->argc != 2)
-		error_exit("We need a map argument!");
+		error_exit("We need and only need 1 map argument!");
 	else if (ft_ends_with(ctx->argv[1], ".ber") == 1)
 		error_exit("Not a valid .ber file :/");
 	else

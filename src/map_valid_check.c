@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 08:57:45 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 11:16:35 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 14:46:25 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ bool	is_valid_path(t_ctx *ctx)
 		while ((*dup_map)[i])
 		{
 			if ((*dup_map)[i] != '1')
+			{
+				free_strs(tpr, NULL);
 				return (false);
+			}
 			++i;
 		}
 		++dup_map;

@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 11:52:16 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 14:55:10 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_grc
 	void			*img_enemy;
 	int				img_w;
 	int				img_h;
-
 }					t_grc;
 
 typedef struct s_ctx
