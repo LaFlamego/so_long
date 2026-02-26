@@ -6,7 +6,7 @@
 #    By: yueli <yueli@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 11:32:37 by yueli             #+#    #+#              #
-#    Updated: 2026/02/25 23:30:52 by yueli            ###   ########.fr        #
+#    Updated: 2026/02/26 11:13:49 by yueli            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,26 @@ LIBFT_LIB = $(LIBFT_DIR)/libft.a
 MLX_DIR = lib/minilibx-linux
 MLX_LIB = -L$(MLX_DIR) -lmlx -lX11 -lXext -lXrandr -lm
 
+BONUS_NAME = so_long_bonus
+BONUS_SRC = bonus/main_bonus.c bonus/feature_bonus.c
+BONUS_OBJ = bonus/main_bonus.o bonus/feature_bonus.o
+
 all: $(NAME)
+
+bonus: $(BONUS_NAME)
 
 $(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
 
+OBJS_NO_MAIN = $(filter-out main.o, $(OBJS))
+
+$(BONUS_NAME): $(BONUS_OBJ) $(OBJS_NO_MAIN) $(LIBFT_LIB) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(BONUS_OBJ) $(OBJS_NO_MAIN) $(LIBFT_LIB) $(MLX_LIB) -o $(BONUS_NAME)
+
 %.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus/%.o: bonus/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT_LIB):
@@ -44,13 +58,15 @@ $(MLX_LIB):
 
 clean:
 	rm -rf $(OBJS)
+	rm -f $(BONUS_OBJ) clean
 	make -C $(LIBFT_DIR) clean
 	make -C $(MLX_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
 	make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re bonus

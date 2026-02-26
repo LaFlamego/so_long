@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 10:04:55 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/21 11:05:19 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 09:30:39 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	open_map(t_ctx *ctx);
 
-static void get_map_height(t_ctx *ctx)
+static void	get_map_height(t_ctx *ctx)
 {
 	size_t	height;
 	char	*line;
@@ -34,8 +34,8 @@ static void get_map_height(t_ctx *ctx)
 
 static char	*get_map_line(t_ctx *ctx, size_t line_len, char *new_line)
 {
-	size_t  i;
-	char    *map_line;
+	size_t	i;
+	char	*map_line;
 
 	if (!new_line)
 		return (NULL);
@@ -61,14 +61,15 @@ static void	prep_read_map(t_ctx *ctx)
 	if (ctx->map_data.height == 0)
 		close_free_error_exit(ctx->map_data.fd,
 			NULL, NULL, "An empty map :/");
-	ctx->map_data.map = (char **)ft_calloc(ctx->map_data.height + 1, sizeof(char *));
+	ctx->map_data.map = (char **)ft_calloc(ctx->map_data.height + 1,
+			sizeof(char *));
 	if (!ctx->map_data.map)
 		return ;
 }
 
 static void	store_map(t_ctx *ctx, char *map_line, size_t line_len)
 {
-	size_t		i;
+	size_t	i;
 	char	*new_line;
 
 	i = 0;
@@ -95,7 +96,8 @@ void	read_map(t_ctx *ctx)
 	prep_read_map(ctx);
 	new_line = get_next_line(ctx->map_data.fd, true);
 	if (!new_line)
-		close_free_error_exit(ctx->map_data.fd, ctx->map_data.map, NULL, "Failed to read map");
+		close_free_error_exit(ctx->map_data.fd, ctx->map_data.map,
+			NULL, "Failed to read map");
 	line_len = ft_strlen(new_line);
 	map_line = get_map_line(ctx, line_len, new_line);
 	free(new_line);

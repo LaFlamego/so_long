@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:04:13 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 22:01:06 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 11:10:37 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,9 @@ int	handle_key(int keycode, void *prm)
 	if (!is_movable(move, ctx))
 		return (0);
 	to_move(move, ctx);
-	check_if_enemy(ctx);
+	print_steps(ctx, false);
 	handle_exit(ctx);
 	render_map(ctx);
 	draw_player(ctx);
-	print_steps(ctx);
 	return (0);
 }

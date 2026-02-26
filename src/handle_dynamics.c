@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 16:28:28 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 23:44:36 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 11:50:57 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	anm_loop(t_ctx *ctx)
 			ctx->ply_anm.cur = 0;
 		render_map(ctx);
 		draw_player(ctx);
-		print_steps(ctx);
 	}
 	return (0);
 }
@@ -42,21 +41,26 @@ void	update_clctb(t_ctx *ctx)
 	}
 }
 
-void	print_steps(t_ctx *ctx)
+void	print_steps(t_ctx *ctx, bool is_bonus)
 {
 	char	*count;
 	char	*str;
 
-	count = ft_itoa(ctx->stps);
-	if (!count)
-		return ;
-	str = ft_strjoin(count, " steps");
-	free(count);
-	if (!str)
-		return ;
-	mlx_string_put(ctx->grc_data.mlx, ctx->grc_data.win,
-		10, 20, 0xFFFFFF, str);
-	free(str);
+	if (!is_bonus)
+		ft_printf("steps: %d\n", ctx->stps);
+	else
+	{
+		count = ft_itoa(ctx->stps);
+		if (!count)
+			return ;
+		str = ft_strjoin(count, " steps");
+		free(count);
+		if (!str)
+			return ;
+		mlx_string_put(ctx->grc_data.mlx, ctx->grc_data.win,
+			10, 20, 0xFFFFFF, str);
+		free(str);
+	}
 }
 
 void	check_if_enemy(t_ctx *ctx)
@@ -69,7 +73,7 @@ void	check_if_enemy(t_ctx *ctx)
 	if (ctx->map_data.map[y][x] == 'O')
 	{
 		ft_printf("Oh no! Shark ate you in your %d steps :c Try again!\n",
-	ctx->stps);
+			ctx->stps);
 		clear_exit(ctx, NULL);
 	}
 }
@@ -83,8 +87,8 @@ void	handle_exit(t_ctx *ctx)
 	y = ctx->player.y;
 	if (ctx->map_data.map[y][x] == 'E' && ctx->clctbs == 0)
 	{
-		ft_printf("Bravo! You won in %d steps. And now you are full of love <3\n",
-			ctx->stps);
+		ft_printf("Bravo! You won in %d steps.", ctx->stps);
+		ft_printf(" And now you are full of love <3\n");
 		clear_exit(ctx, NULL);
 	}
 }

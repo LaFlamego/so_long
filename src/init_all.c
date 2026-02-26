@@ -6,15 +6,11 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 23:21:01 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 10:30:11 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int		close_window(void *prm);
-int		handle_key(int keycode, void *prm);
-int		anm_loop(t_ctx *ctx);
 
 void	init_ctx(t_ctx *ctx, int argc, char **argv)
 {
@@ -55,7 +51,8 @@ void	init_mlx(t_ctx *ctx)
 	if (!ctx->grc_data.mlx)
 		return ;
 	mlx_ptr = ctx->grc_data.mlx;
-	ctx->grc_data.win = mlx_new_window(mlx_ptr, width * TILE_SIZE, height * TILE_SIZE, "so_long v.v");
+	ctx->grc_data.win = mlx_new_window(mlx_ptr, width * TILE_SIZE,
+			height * TILE_SIZE, "so_long v.v");
 	if (!ctx->grc_data.win)
 		return ;
 }

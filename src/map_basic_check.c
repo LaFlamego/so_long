@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_basic_check.c                                        :+:      :+:    :+:   */
+/*   map_basic_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:05 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/17 18:21:25 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 11:36:33 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	is_rectangular(char **map)
 	return (true);
 }
 
-static void	tile_check_and_mark(t_ctx *ctx, int lookup[3], int i, int j)
+void	tile_check_and_mark(t_ctx *ctx, int lookup[3], int i, int j)
 {
 	char	**map;
 
@@ -66,17 +66,18 @@ bool	is_valid_tile(t_ctx *ctx)
 	int		i;
 	int		j;
 	char	**map;
-	int		lookup[4] = {};
+	int		lookup[4];
 
+	ft_bzero(lookup, sizeof(int) * 4);
 	map = ctx->map_data.map;
-	j = 0;
+	j = 1;
 	while (map[j])
 	{
 		i = 0;
 		while (map[j][i])
 		{
 			if (map[j][i] != '0' && map[j][i] != '1' && map[j][i] != 'C'
-				&& map[j][i] != 'E' && map[j][i] != 'P' && map[j][i] != 'O')
+				&& map[j][i] != 'E' && map[j][i] != 'P')
 				return (false);
 			tile_check_and_mark(ctx, lookup, i, j);
 			++i;

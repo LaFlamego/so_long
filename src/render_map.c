@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:58:00 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/25 23:19:19 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 09:25:36 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	draw_stuff(char type, size_t x, size_t y, t_ctx *ctx)
 void	draw_player(t_ctx *ctx)
 {
 	mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
-		ctx->ply_anm.frms[ctx->ply_anm.cur], ctx->player.x * TILE_SIZE, ctx->player.y * TILE_SIZE);
+		ctx->ply_anm.frms[ctx->ply_anm.cur], ctx->player.x * TILE_SIZE,
+		ctx->player.y * TILE_SIZE);
 }
 
 void	render_map(t_ctx *ctx)

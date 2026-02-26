@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 17:53:32 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 10:48:36 by yueli            ###   ########.fr       */
+/*   Created: 2026/02/26 09:44:14 by yueli             #+#    #+#             */
+/*   Updated: 2026/02/26 11:49:44 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	main(int argc, char **argv)
 {
@@ -18,14 +18,14 @@ int	main(int argc, char **argv)
 
 	init_ctx(&ctx, argc, argv);
 	load_map(&ctx);
-	if (!is_valid_map(&ctx))
+	if (!is_valid_map_bonus(&ctx))
 		return (1);
 	init_mlx(&ctx);
-	init_hook(&ctx);
-	load_sprites(&ctx, false);
+	init_hook_bonus(&ctx);
+	load_sprites(&ctx, true);
 	render_map(&ctx);
 	draw_player(&ctx);
-	print_steps(&ctx, false);
+	print_steps(&ctx, true);
 	mlx_loop(ctx.grc_data.mlx);
 	return (0);
 }

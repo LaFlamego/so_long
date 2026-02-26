@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 17:53:32 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 10:48:36 by yueli            ###   ########.fr       */
+/*   Created: 2026/02/26 10:10:50 by yueli             #+#    #+#             */
+/*   Updated: 2026/02/26 11:48:42 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
-int	main(int argc, char **argv)
-{
-	t_ctx	ctx;
+# include "../includes/so_long.h"
 
-	init_ctx(&ctx, argc, argv);
-	load_map(&ctx);
-	if (!is_valid_map(&ctx))
-		return (1);
-	init_mlx(&ctx);
-	init_hook(&ctx);
-	load_sprites(&ctx, false);
-	render_map(&ctx);
-	draw_player(&ctx);
-	print_steps(&ctx, false);
-	mlx_loop(ctx.grc_data.mlx);
-	return (0);
-}
+bool	is_valid_tile_bonus(t_ctx *ctx);
+bool	is_valid_map_bonus(t_ctx *ctx);
+void	init_hook_bonus(t_ctx *ctx);
+
+#endif

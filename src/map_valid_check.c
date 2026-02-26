@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_valid_check.c                                   :+:      :+:    :+:   */
+/*   map_valid_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 08:57:45 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/18 15:38:25 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 11:16:35 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 #include "../includes/so_long.h"
 
-bool    is_rectangular(char **map);
-bool    is_valid_tile(t_ctx *ctx);
-bool    is_enclosed(char **map, t_ctx *ctx);
+bool	is_valid_tile(t_ctx *ctx);
 
-static void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
+void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
 {
 	if (y >= ctx->map_data.height || x >= ctx->map_data.width)
 		return ;
@@ -29,11 +27,11 @@ static void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
 		dup_map[y][x] = '1';
 	fill(dup_map, ctx, y - 1, x);
 	fill(dup_map, ctx, y + 1, x);
-    fill(dup_map, ctx, y, x - 1);
-    fill(dup_map, ctx, y, x + 1);
+	fill(dup_map, ctx, y, x - 1);
+	fill(dup_map, ctx, y, x + 1);
 }
 
-static bool	is_valid_path(t_ctx *ctx)
+bool	is_valid_path(t_ctx *ctx)
 {
 	char	**dup_map;
 	char	**tpr;
@@ -46,7 +44,7 @@ static bool	is_valid_path(t_ctx *ctx)
 	{
 		i = 0;
 		while ((*dup_map)[i])
-		{	
+		{
 			if ((*dup_map)[i] != '1')
 				return (false);
 			++i;
@@ -69,5 +67,3 @@ bool	is_valid_map(t_ctx *ctx)
 		error_free_exit("0 path is good to go :/", ctx);
 	return (true);
 }
-
-
