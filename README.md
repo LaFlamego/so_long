@@ -1,4 +1,4 @@
-*This project is part of the 42 school curriculum.*
+*This project has been created as part of the 42 curriculum by yueli.*
 
 # so_long
 
