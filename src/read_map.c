@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 10:04:55 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 09:30:39 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 17:25:40 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,7 @@ void	read_map(t_ctx *ctx)
 	free(new_line);
 	store_map(ctx, map_line, line_len);
 	close(ctx->map_data.fd);
+	if (TILE_SIZE * ctx->map_data.width > 1920
+		|| TILE_SIZE * ctx->map_data.height > 1080)
+		error_free_exit("Map is too large!", ctx);
 }
