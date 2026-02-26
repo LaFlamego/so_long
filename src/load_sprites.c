@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 22:56:47 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 11:51:20 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/26 20:59:05 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	load_ply_anm(t_ctx *ctx, bool is_bonus)
 	if (!is_bonus)
 	{
 		ctx->ply_anm.frms[1] = mlx_xpm_file_to_image(mlx,
-				"src/sprites/player.xpm",
+				"src/sprites/player_0.xpm",
 				&ctx->grc_data.img_w, &ctx->grc_data.img_h);
 		check_sprite_valid(ctx->ply_anm.frms[1], ctx);
 	}
