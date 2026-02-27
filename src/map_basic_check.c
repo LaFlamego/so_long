@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:05 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 17:20:48 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 11:56:39 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,11 @@ void	tile_check_and_mark(t_ctx *ctx, int lookup[3], int i, int j)
 		++ctx->clctbs;
 	}
 	else if (map[j][i] == 'O')
+	{
 		lookup[3] += 1;
+		ctx->enemy.x = i;
+		ctx->enemy.y = j;
+	}
 }
 
 bool	is_valid_tile(t_ctx *ctx)

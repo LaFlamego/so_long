@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 18:39:07 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 10:30:11 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 11:54:48 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	init_ctx(t_ctx *ctx, int argc, char **argv)
 	ctx->grc_data.img_h = 0;
 	ctx->player.x = 0;
 	ctx->player.y = 0;
+	ctx->enemy.x = 0;
+	ctx->enemy.y = 0;
 	ctx->stps = 0;
 	ctx->clctbs = 0;
-	ctx->ply_anm.frms_count = 2;
 	ctx->ply_anm.cur = 0;
 	ctx->ply_anm.tick = 0;
 }

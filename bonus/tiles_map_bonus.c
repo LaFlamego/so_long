@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   feature_bonus.c                                    :+:      :+:    :+:   */
+/*   tiles_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 09:56:21 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 11:49:36 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:11:15 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,49 +51,4 @@ bool	is_valid_map_bonus(t_ctx *ctx)
 	else if (!is_valid_path(ctx))
 		error_free_exit("0 path is good to go :/", ctx);
 	return (true);
-}
-
-int	handle_key_bonus(int keycode, void *prm)
-{
-	t_move	move;
-	t_ctx	*ctx;
-
-	ctx = (t_ctx *)prm;
-	if (keycode == KEY_ESC)
-		clear_exit(ctx, NULL);
-	move = trans_key_to_move(keycode);
-	if (move.dx == 0 && move.dy == 0)
-		return (0);
-	if (!is_movable(move, ctx))
-		return (0);
-	to_move(move, ctx);
-	check_if_enemy(ctx);
-	handle_exit(ctx);
-	render_map(ctx);
-	draw_player(ctx);
-	print_steps(ctx, true);
-	return (0);
-}
-
-int	anm_loop_bonus(t_ctx *ctx)
-{
-	++ctx->ply_anm.tick;
-	if (ctx->ply_anm.tick >= 40)
-	{
-		ctx->ply_anm.tick = 0;
-		++ctx->ply_anm.cur;
-		if (ctx->ply_anm.cur >= ctx->ply_anm.frms_count)
-			ctx->ply_anm.cur = 0;
-		render_map(ctx);
-		draw_player(ctx);
-		print_steps(ctx, true);
-	}
-	return (0);
-}
-
-void	init_hook_bonus(t_ctx *ctx)
-{
-	mlx_hook(ctx->grc_data.win, 17, 0, close_window, ctx);
-	mlx_key_hook(ctx->grc_data.win, handle_key_bonus, ctx);
-	mlx_loop_hook(ctx->grc_data.mlx, anm_loop_bonus, ctx);
 }

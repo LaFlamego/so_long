@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 23:30:22 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 09:16:01 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 10:54:02 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	clear_exit(t_ctx *ctx, char *msg)
 	distroy_img(ctx->grc_data.mlx, ctx->grc_data.img_floor);
 	distroy_img(ctx->grc_data.mlx, ctx->ply_anm.frms[0]);
 	distroy_img(ctx->grc_data.mlx, ctx->ply_anm.frms[1]);
+	distroy_img(ctx->grc_data.mlx, ctx->ply_anm.frms[2]);
+	distroy_img(ctx->grc_data.mlx, ctx->ply_anm.frms[3]);
 	distroy_img(ctx->grc_data.mlx, ctx->grc_data.img_exit);
 	distroy_img(ctx->grc_data.mlx, ctx->grc_data.img_clctb);
 	distroy_img(ctx->grc_data.mlx, ctx->grc_data.img_enemy);

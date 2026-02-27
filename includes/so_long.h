@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 14:55:10 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 12:53:05 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../lib/minilibx-linux/mlx_int.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include <sys/time.h>
 
 # ifndef TILE_SIZE
 #  define TILE_SIZE 64
@@ -47,8 +48,7 @@ typedef struct s_move
 
 typedef struct s_anm
 {
-	void			*frms[2];
-	int				frms_count;
+	void			*frms[4];
 	int				cur;
 	int				tick;
 }			t_anm;
@@ -83,6 +83,7 @@ typedef struct s_ctx
 	struct s_map	map_data;
 	struct s_grc	grc_data;
 	struct s_tile	player;
+	struct s_tile	enemy;
 	struct s_anm	ply_anm;
 }					t_ctx;
 
@@ -97,8 +98,8 @@ bool	is_valid_map(t_ctx *ctx);
 bool	is_rectangular(char **map);
 bool	is_enclosed(char **map, t_ctx *ctx);
 bool	is_valid_path(t_ctx *ctx);
-bool	is_movable(t_move move, t_ctx *ctx);
-void	to_move(t_move move, t_ctx *ctx);
+bool	is_movable(t_move move, t_ctx *ctx, bool is_player);
+void	to_move(t_move move, t_ctx *ctx, bool is_player);
 void	init_mlx(t_ctx *ctx);
 void	init_hook(t_ctx *ctx);
 void	load_sprites(t_ctx *ctx, bool is_bonus);
@@ -112,5 +113,6 @@ t_move	trans_key_to_move(int key);
 int		close_window(void *prm);
 int		handle_key(int keycode, void *prm);
 int		anm_loop(t_ctx *ctx);
+void	draw_enemy(t_ctx *ctx);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_dynamics.c                                  :+:      :+:    :+:   */
+/*   handle_events.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 16:28:28 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 11:50:57 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 11:40:03 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,20 @@
 
 int	anm_loop(t_ctx *ctx)
 {
-	++ctx->ply_anm.tick;
-	if (ctx->ply_anm.tick >= 40)
-	{
-		ctx->ply_anm.tick = 0;
-		++ctx->ply_anm.cur;
-		if (ctx->ply_anm.cur >= ctx->ply_anm.frms_count)
-			ctx->ply_anm.cur = 0;
-		render_map(ctx);
-		draw_player(ctx);
-	}
+	static long	last_ms = 0;
+	struct timeval	tv;
+	long		cur_ms;
+	if (gettimeofday(&tv, NULL) == -1)
+		return (0);
+	cur_ms = tv.tv_sec * 1000L + tv.tv_usec / 1000L;
+	if (cur_ms - last_ms < 100)
+		return (0);
+	last_ms = cur_ms;
+	++ctx->ply_anm.cur;
+	if (ctx->ply_anm.cur >= 4)
+		ctx->ply_anm.cur = 0;
+	render_map(ctx);
+	draw_player(ctx);
 	return (0);
 }
 
@@ -58,7 +62,7 @@ void	print_steps(t_ctx *ctx, bool is_bonus)
 		if (!str)
 			return ;
 		mlx_string_put(ctx->grc_data.mlx, ctx->grc_data.win,
-			10, 20, 0xFFFFFF, str);
+			10, 33, 0xFFFFFF, str);
 		free(str);
 	}
 }
