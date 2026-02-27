@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 08:57:45 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/26 14:46:25 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 17:53:55 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	fill(char **dup_map, t_ctx *ctx, size_t y, size_t x)
 {
 	if (y >= ctx->map_data.height || x >= ctx->map_data.width)
 		return ;
-	if (dup_map[y][x] == '1')
+	if (dup_map[y][x] == '1' || dup_map[y][x] == 'O')
 		return ;
 	else if (dup_map[y][x] == '0' || dup_map[y][x] == 'E'
-		|| dup_map[y][x] == 'C' || dup_map[y][x] == 'P' || dup_map[y][x] == 'O')
+		|| dup_map[y][x] == 'C' || dup_map[y][x] == 'P')
 		dup_map[y][x] = '1';
 	fill(dup_map, ctx, y - 1, x);
 	fill(dup_map, ctx, y + 1, x);
@@ -45,7 +45,7 @@ bool	is_valid_path(t_ctx *ctx)
 		i = 0;
 		while ((*dup_map)[i])
 		{
-			if ((*dup_map)[i] != '1')
+			if ((*dup_map)[i] != '1' && (*dup_map)[i] != 'O')
 			{
 				free_strs(tpr, NULL);
 				return (false);

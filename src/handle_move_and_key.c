@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:04:13 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 12:09:14 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 17:31:40 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,20 @@ bool	is_movable(t_move move, t_ctx *ctx, bool is_player)
 	return (true);
 }
 
-void	to_move(t_move move, t_ctx *ctx, bool is_player)
+void	to_move(t_move move, t_ctx *ctx)
 {
-	if (is_player)
-	{
-		ctx->player.x += move.dx;
-		ctx->player.y += move.dy;
-		update_clctb(ctx);
-		++ctx->stps;
-	}
-	else
-	{
-		ctx->enemy.x += move.dx;
-		ctx->enemy.y += move.dy;
-	}
+	// if (is_player)
+	// {
+	ctx->player.x += move.dx;
+	ctx->player.y += move.dy;
+	update_clctb(ctx);
+	++ctx->stps;
+	// }
+	// else
+	// {
+	// 	ctx->enemy.x += move.dx;
+	// 	ctx->enemy.y += move.dy;
+	// }
 }
 
 
@@ -85,7 +85,7 @@ int	handle_key(int keycode, void *prm)
 		return (0);
 	if (!is_movable(move, ctx, true))
 		return (0);
-	to_move(move, ctx, true);
+	to_move(move, ctx);
 	print_steps(ctx, false);
 	handle_exit(ctx);
 	render_map(ctx);

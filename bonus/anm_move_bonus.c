@@ -6,36 +6,43 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 12:10:09 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 13:35:10 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 19:26:05 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long_bonus.h"
 
-void	enemy_move(t_ctx *ctx)
+void	update_enemy(t_ctx *ctx, t_move *move)
+{
+	ctx->map_data.map[ctx->enemy.y][ctx->enemy.x] = '0';
+	ctx->enemy.x += move->dx;
+	ctx->map_data.map[ctx->enemy.y][ctx->enemy.x] = 'O';
+}
+
+static void	enemy_move(t_ctx *ctx)
 {
 	t_move		move;
-	static int	change = 0;
+	static int	to_left = 0;
 
-	move.dx = 1;
 	move.dy = 0;
+	move.dx = 1;
 	if (is_movable(move, ctx, false))
 	{
-		if (change == 0)
-			to_move(move, ctx, false);
+		if (to_left == 0)
+			update_enemy(ctx, &move);
 	}
-	if (!is_movable(move, ctx, false) || change == 1)
+	if (!is_movable(move, ctx, false) || to_left == 1)
 	{
-		change = 1;
+		to_left = 1;
 		move.dx = -1;
-		move.dy = 0;
 		if (is_movable(move, ctx, false))
-			to_move(move, ctx, false);
-		else if (change == 1)
-			change = 0; 
+			update_enemy(ctx, &move);
+		else if (to_left == 1)
+			to_left = 0;
 		else
 			return ;
 	}
+	printf("222\n");
 }
 
 int	handle_key_bonus(int keycode, void *prm)
@@ -51,9 +58,10 @@ int	handle_key_bonus(int keycode, void *prm)
 		return (0);
 	if (!is_movable(move, ctx, true))
 		return (0);
-	to_move(move, ctx, true);
+	to_move(move, ctx);
 	check_if_enemy(ctx);
 	handle_exit(ctx);
+	enemy_move(ctx);
 	render_map(ctx);
 	draw_player(ctx);
 	print_steps(ctx, true);

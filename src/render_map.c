@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/21 15:58:00 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 12:52:50 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/27 17:16:29 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ static void	draw_stuff(char type, size_t x, size_t y, t_ctx *ctx)
 	else if (type == 'C')
 		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
 			ctx->grc_data.img_clctb, x * TILE_SIZE, y * TILE_SIZE);
-	// else if (type == 'O')
-	// 	mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
-	// 		ctx->grc_data.img_enemy, x * TILE_SIZE, y * TILE_SIZE);
+	else if (type == 'O')
+		mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+			ctx->grc_data.img_enemy, x * TILE_SIZE, y * TILE_SIZE);
 }
 
-void	draw_enemy(t_ctx *ctx)
-{
-	mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
-			ctx->grc_data.img_enemy, ctx->enemy.x * TILE_SIZE, ctx->enemy.y * TILE_SIZE);
-}
+// void	draw_enemy(t_ctx *ctx)
+// {
+// 	mlx_put_image_to_window(ctx->grc_data.mlx, ctx->grc_data.win,
+// 		ctx->grc_data.img_enemy, ctx->enemy.x * TILE_SIZE, ctx->enemy.y * TILE_SIZE);
+// }
 
 void	draw_player(t_ctx *ctx)
 {
