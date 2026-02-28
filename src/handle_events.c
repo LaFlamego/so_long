@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 16:28:28 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 11:40:03 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/28 11:26:21 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	anm_loop(t_ctx *ctx)
 {
-	static long	last_ms = 0;
+	static long		last_ms = 0;
 	struct timeval	tv;
-	long		cur_ms;
+	long			cur_ms;
+
 	if (gettimeofday(&tv, NULL) == -1)
 		return (0);
 	cur_ms = tv.tv_sec * 1000L + tv.tv_usec / 1000L;

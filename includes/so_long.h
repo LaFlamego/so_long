@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 15:35:38 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 16:57:39 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/28 11:28:44 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ t_move	trans_key_to_move(int key);
 int		close_window(void *prm);
 int		handle_key(int keycode, void *prm);
 int		anm_loop(t_ctx *ctx);
-void	draw_enemy(t_ctx *ctx);
 
 #endif

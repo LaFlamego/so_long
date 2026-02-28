@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 15:04:13 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 17:31:40 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/28 11:26:11 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,20 +57,11 @@ bool	is_movable(t_move move, t_ctx *ctx, bool is_player)
 
 void	to_move(t_move move, t_ctx *ctx)
 {
-	// if (is_player)
-	// {
 	ctx->player.x += move.dx;
 	ctx->player.y += move.dy;
 	update_clctb(ctx);
 	++ctx->stps;
-	// }
-	// else
-	// {
-	// 	ctx->enemy.x += move.dx;
-	// 	ctx->enemy.y += move.dy;
-	// }
 }
-
 
 int	handle_key(int keycode, void *prm)
 {

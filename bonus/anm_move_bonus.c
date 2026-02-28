@@ -6,7 +6,7 @@
 /*   By: yueli <yueli@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 12:10:09 by yueli             #+#    #+#             */
-/*   Updated: 2026/02/27 19:26:05 by yueli            ###   ########.fr       */
+/*   Updated: 2026/02/28 11:27:24 by yueli            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void	enemy_move(t_ctx *ctx)
 
 	move.dy = 0;
 	move.dx = 1;
-	if (is_movable(move, ctx, false))
+	if (is_movable(move, ctx, false) && to_left == 0)
 	{
-		if (to_left == 0)
-			update_enemy(ctx, &move);
+		update_enemy(ctx, &move);
+		return ;
 	}
 	if (!is_movable(move, ctx, false) || to_left == 1)
 	{
@@ -37,12 +37,14 @@ static void	enemy_move(t_ctx *ctx)
 		move.dx = -1;
 		if (is_movable(move, ctx, false))
 			update_enemy(ctx, &move);
-		else if (to_left == 1)
-			to_left = 0;
 		else
-			return ;
+		{
+			to_left = 0;
+			move.dx = 1;
+			if (is_movable(move, ctx, false))
+				update_enemy(ctx, &move);
+		}
 	}
-	printf("222\n");
 }
 
 int	handle_key_bonus(int keycode, void *prm)
@@ -61,7 +63,6 @@ int	handle_key_bonus(int keycode, void *prm)
 	to_move(move, ctx);
 	check_if_enemy(ctx);
 	handle_exit(ctx);
-	enemy_move(ctx);
 	render_map(ctx);
 	draw_player(ctx);
 	print_steps(ctx, true);
@@ -77,12 +78,13 @@ int	anm_loop_bonus(t_ctx *ctx)
 	if (gettimeofday(&tv, NULL) == -1)
 		return (0);
 	cur_ms = tv.tv_sec * 1000L + tv.tv_usec / 1000L;
-	if (cur_ms - last_ms < 300)
+	if (cur_ms - last_ms < 500)
 		return (0);
 	last_ms = cur_ms;
 	++ctx->ply_anm.cur;
 	if (ctx->ply_anm.cur >= 4)
 		ctx->ply_anm.cur = 0;
+	enemy_move(ctx);
 	render_map(ctx);
 	draw_player(ctx);
 	print_steps(ctx, true);
